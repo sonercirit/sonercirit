@@ -189,6 +189,11 @@ body.is-switching .lang-switch::before {
   white-space: pre-wrap;
 }
 
+.bio-subline {
+  margin-top: 0.2rem;
+  color: #85858f;
+}
+
 @media (min-width: 780px) {
   .bio {
     max-width: none;
