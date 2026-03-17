@@ -11,7 +11,7 @@
       social: 'SOSYAL',
       professional: 'PROFESYONEL',
       contact: 'İLETİŞİM',
-      href: 'index.html',
+      href: '/',
     },
     en: {
       htmlLang: 'en',
