@@ -1,0 +1,46 @@
+name: Deploy to Cloudflare R2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-r2-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Prepare deploy directory
+        run: |
+          rm -rf .deploy
+          mkdir -p .deploy
+          cp index.html en.html styles.css site.js .deploy/
+          cp -R assets .deploy/assets
+
+      - name: Configure AWS credentials for R2
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          aws-region: auto
+
+      - name: Sync site to R2 bucket root
+        env:
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+        run: |
+          aws s3 sync .deploy "s3://${R2_BUCKET}" \
+            --endpoint-url "${R2_ENDPOINT_URL}" \
+            --delete \
+            --no-progress
