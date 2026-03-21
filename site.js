@@ -3,7 +3,8 @@
     tr: {
       htmlLang: 'tr',
       pageTitle: 'Soner CIRIT',
-      description: 'Soner CIRIT — gencturkler.co BT Lideri ve hurriyetpartisi.org Üyesi.',
+      description:
+        'Soner CIRIT - gencturkler.co BT Lideri ve hurriyetpartisi.org Üyesi | Kıdemli Yazılım Mühendisi ve Sistem Mimarı',
       switcherLabel: 'Dil değiştirici',
       bioPrefix: '',
       bioMiddle: ' BT Lideri ve ',
@@ -17,7 +18,8 @@
     en: {
       htmlLang: 'en',
       pageTitle: 'Soner CIRIT',
-      description: 'Soner CIRIT — IT Lead at gencturkler.co and member of hurriyetpartisi.org.',
+      description:
+        'Soner CIRIT - IT Lead at gencturkler.co and member of hurriyetpartisi.org | Senior Software Engineer and Systems Architect',
       switcherLabel: 'Language switcher',
       bioPrefix: 'IT Lead at ',
       bioMiddle: ' and member of ',
@@ -36,6 +38,11 @@
   const languageLinks = [...document.querySelectorAll('[data-lang-link]')];
   const translatables = [...document.querySelectorAll('[data-i18n]')];
   const metaDescription = document.querySelector('meta[name="description"]');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
   const titleElement = document.querySelector('title');
   const reducedMotionQuery =
     typeof window.matchMedia === 'function'
@@ -163,6 +170,26 @@
 
     if (metaDescription) {
       metaDescription.setAttribute('content', nextCopy.description);
+    }
+
+    if (ogTitle) {
+      ogTitle.setAttribute('content', nextCopy.pageTitle);
+    }
+
+    if (ogDescription) {
+      ogDescription.setAttribute('content', nextCopy.description);
+    }
+
+    if (ogUrl) {
+      ogUrl.setAttribute('content', window.location.href);
+    }
+
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', nextCopy.pageTitle);
+    }
+
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', nextCopy.description);
     }
   }
 
