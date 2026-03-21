@@ -4,7 +4,7 @@
       htmlLang: 'tr',
       pageTitle: 'Soner CIRIT',
       description:
-        'Soner CIRIT - gencturkler.co BT Lideri ve hurriyetpartisi.org Üyesi | Kıdemli Yazılım Mühendisi ve Sistem Mimarı',
+        'gencturkler.co BT Lideri ve hurriyetpartisi.org Üyesi | Kıdemli Yazılım Mühendisi ve Sistem Mimarı',
       switcherLabel: 'Dil değiştirici',
       bioPrefix: '',
       bioMiddle: ' BT Lideri ve ',
@@ -19,7 +19,7 @@
       htmlLang: 'en',
       pageTitle: 'Soner CIRIT',
       description:
-        'Soner CIRIT - IT Lead at gencturkler.co and member of hurriyetpartisi.org | Senior Software Engineer and Systems Architect',
+        'IT Lead at gencturkler.co and member of hurriyetpartisi.org | Senior Software Engineer and Systems Architect',
       switcherLabel: 'Language switcher',
       bioPrefix: 'IT Lead at ',
       bioMiddle: ' and member of ',
