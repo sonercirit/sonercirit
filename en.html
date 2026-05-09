@@ -63,34 +63,80 @@
           </p>
 
           <div class="sections">
-            <section class="section">
+            <section class="section social-section">
               <h2 data-i18n="social">SOCIAL</h2>
-              <ul class="list">
-                <li>
+              <fieldset class="social-filter-form">
+                <legend class="social-filter-legend" data-i18n="socialFiltersLabel">Social filters</legend>
+                <input class="social-filter-input" type="radio" name="social-filter" id="social-filter-all" checked />
+                <input class="social-filter-input" type="radio" name="social-filter" id="social-filter-live" />
+                <input class="social-filter-input" type="radio" name="social-filter" id="social-filter-shorts" />
+                <input class="social-filter-input" type="radio" name="social-filter" id="social-filter-thoughts" />
+                <div class="social-filters">
+                  <label for="social-filter-all" data-i18n="filterAll">All</label>
+                  <label for="social-filter-live" data-i18n="tagLive">Live</label>
+                  <label for="social-filter-shorts" data-i18n="tagShorts">Shorts</label>
+                  <label for="social-filter-thoughts" data-i18n="tagThoughts">Thoughts</label>
+                </div>
+                <ul class="list social-list">
+                <li data-social-item data-tags="live shorts thoughts">
                   <a href="https://x.com/sonercirit" target="_blank" rel="noopener noreferrer me">
                     <span>X</span>
                     <small>x.com/sonercirit</small>
+                    <div class="tags">
+                      <span data-i18n="tagLive" data-tag="live">Live</span>
+                      <span data-i18n="tagShorts" data-tag="shorts">Shorts</span>
+                      <span data-i18n="tagThoughts" data-tag="thoughts">Thoughts</span>
+                    </div>
                   </a>
                 </li>
-                <li>
+                <li data-social-item data-tags="live shorts">
                   <a href="https://www.youtube.com/@soner_cirit" target="_blank" rel="noopener noreferrer me">
                     <span>YouTube</span>
                     <small>youtube.com/@soner_cirit</small>
+                    <div class="tags">
+                      <span data-i18n="tagLive" data-tag="live">Live</span>
+                      <span data-i18n="tagShorts" data-tag="shorts">Shorts</span>
+                    </div>
                   </a>
                 </li>
-                <li>
+                <li data-social-item data-tags="shorts">
                   <a href="https://www.instagram.com/sonercirit_" target="_blank" rel="noopener noreferrer me">
                     <span>Instagram</span>
                     <small>instagram.com/sonercirit_</small>
+                    <div class="tags">
+                      <span data-i18n="tagShorts" data-tag="shorts">Shorts</span>
+                    </div>
                   </a>
                 </li>
-                <li>
+                <li data-social-item data-tags="shorts">
                   <a href="https://www.tiktok.com/@sonercirit_" target="_blank" rel="noopener noreferrer me">
                     <span>TikTok</span>
                     <small>tiktok.com/@sonercirit_</small>
+                    <div class="tags">
+                      <span data-i18n="tagShorts" data-tag="shorts">Shorts</span>
+                    </div>
                   </a>
                 </li>
-              </ul>
+                <li data-social-item data-tags="live">
+                  <a href="https://www.twitch.tv/soner_cirit" target="_blank" rel="noopener noreferrer me">
+                    <span>Twitch</span>
+                    <small>twitch.tv/soner_cirit</small>
+                    <div class="tags">
+                      <span data-i18n="tagLive" data-tag="live">Live</span>
+                    </div>
+                  </a>
+                </li>
+                <li data-social-item data-tags="live">
+                  <a href="https://kick.com/sonercirit" target="_blank" rel="noopener noreferrer me">
+                    <span>Kick</span>
+                    <small>kick.com/sonercirit</small>
+                    <div class="tags">
+                      <span data-i18n="tagLive" data-tag="live">Live</span>
+                    </div>
+                  </a>
+                </li>
+                </ul>
+              </fieldset>
             </section>
 
             <section class="section">

@@ -13,6 +13,11 @@
       social: 'SOSYAL',
       professional: 'PROFESYONEL',
       contact: 'İLETİŞİM',
+      filterAll: 'Tümü',
+      socialFiltersLabel: 'Sosyal filtreleri',
+      tagLive: 'Canlı',
+      tagShorts: 'Kısa',
+      tagThoughts: 'Düşünceler',
       href: '/',
     },
     en: {
@@ -28,6 +33,11 @@
       social: 'SOCIAL',
       professional: 'PROFESSIONAL',
       contact: 'CONTACT',
+      filterAll: 'All',
+      socialFiltersLabel: 'Social filters',
+      tagLive: 'Live',
+      tagShorts: 'Shorts',
+      tagThoughts: 'Thoughts',
       href: 'en.html',
     },
   };
