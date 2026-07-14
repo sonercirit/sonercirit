@@ -62,13 +62,64 @@
       : { matches: false };
   const SCRAMBLE_CHARS =
     'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz0123456789<>/\\[]{}=+-_*';
+  const DEFAULT_LANGUAGE = 'en';
+  const LANGUAGE_PREFERENCE_KEY = 'sonercirit-language';
 
-  let currentLanguage = getLanguageFromLocation();
+  let currentLanguage = getInitialLanguage();
   let switchingTimer = null;
 
   function getLanguageFromLocation() {
     const fileName = (window.location.pathname.split('/').pop() || '').toLowerCase();
     return fileName === 'en.html' ? 'en' : 'tr';
+  }
+
+  function getStoredLanguage() {
+    try {
+      const storedLanguage = window.localStorage.getItem(LANGUAGE_PREFERENCE_KEY);
+      return copy[storedLanguage] ? storedLanguage : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function getBrowserLanguage() {
+    const browserLanguages = Array.from(
+      window.navigator.languages?.length
+        ? window.navigator.languages
+        : [window.navigator.language],
+    );
+
+    for (const locale of browserLanguages) {
+      const language = String(locale || '')
+        .toLowerCase()
+        .split(/[-_]/)[0];
+
+      if (copy[language]) {
+        return language;
+      }
+    }
+
+    return DEFAULT_LANGUAGE;
+  }
+
+  function getInitialLanguage() {
+    const locationLanguage = getLanguageFromLocation();
+
+    // en.html is an explicit language URL. The root is localized from the
+    // visitor's saved choice or browser preferences.
+    if (locationLanguage === 'en') {
+      return locationLanguage;
+    }
+
+    return getStoredLanguage() || getBrowserLanguage();
+  }
+
+  function rememberLanguage(lang) {
+    try {
+      window.localStorage.setItem(LANGUAGE_PREFERENCE_KEY, lang);
+    } catch (error) {
+      // Language switching still works when storage is unavailable.
+    }
   }
 
   function shouldHandleClick(event) {
@@ -247,6 +298,22 @@
     }, 1400);
   }
 
+  function replaceLanguageUrl(lang) {
+    if (
+      getLanguageFromLocation() === lang ||
+      !window.history ||
+      typeof window.history.replaceState !== 'function'
+    ) {
+      return;
+    }
+
+    try {
+      window.history.replaceState({ lang }, '', copy[lang].href);
+    } catch (error) {
+      // Keep the current URL when the History API is restricted (for example, file://).
+    }
+  }
+
   function pushLanguageUrl(lang, href) {
     if (!window.history || typeof window.history.pushState !== 'function') {
       window.location.href = href;
@@ -270,6 +337,8 @@
         return;
       }
 
+      rememberLanguage(targetLang);
+
       if (targetLang === currentLanguage) {
         event.preventDefault();
         return;
@@ -289,5 +358,6 @@
     applyLanguage(getLanguageFromLocation(), { animate: false });
   });
 
+  replaceLanguageUrl(currentLanguage);
   applyLanguage(currentLanguage, { animate: false });
 })();
